@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular,"Helvetica Neue",Helvitica,Arial,sans-serif;
+
+}
+
+/* moves the four corner container that holds the search button*/
+.container{
+    max-width: 1000px;
+    margin: 30px auto;
+    /*padding: 10px;*/
+    /*color: green;*/
+    /*align-items: center;*/
+    position: relative;
+
+    min-height: 100vh;
+}
