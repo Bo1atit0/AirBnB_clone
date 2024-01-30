@@ -50,8 +50,12 @@
 
 }
 
+
+
 .locations{
     border-right: 1px solid #DDDDDD;
+
+
     /*position: relative;*/
 }
 
@@ -74,4 +78,37 @@
 .amenities h3,
 .amenities h4 {
     margin: 3px 30px;
+}
+
+.popover{
+    background-color: #fafafa;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: absolute;
+    top: 100%;
+    justify-content: center;
+    display: none;
+
+    z-index: 1;
+}
+
+
+
+.popover h2{
+    font-size: 16px;
+    margin: 10px;
+}
+.popover ul{
+    margin: 3px 0 0 -30px;
+    list-style: none;
+}
+
+.locations:hover.popover{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    color: red;
+   /* display: block;*/
 }
