@@ -71,3 +71,7 @@ class FileStorage:
                 for key, value in obj_load.items():
                     class_name, object_id = key.split('.')
                     self.__objects[key] = self.our_classes[class_name](**value)
+
+    def delete(self, obj=None):
+        if obj is not None:
+            del obj
