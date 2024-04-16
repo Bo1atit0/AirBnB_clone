@@ -51,17 +51,39 @@ class HBNBCommand(cmd.Cmd):
     def do_create(self, command):
         """Instantiate a new create method to save in JSON."""
         args = shlex.split(command)
-        if not args:
-            print("** class name missing **")
+        if len(args) < 2:
+            print("**Usage: <Class name> <param 1> <param 2> <param 3>...**")
         elif args[0] not in self.classes:
-            print("** class doesn't exist **")
+            print("**class doesn't exist**")
         else:
             obj = args[0]
-            if obj in self.classes.keys():
-                new_instance = self.classes[obj]()
-                if new_instance is not None:
-                    print("{}".format(new_instance.id))
-                    new_instance.save()
+            class_param = {}
+            for param in args[1:]:
+                parts = param.split('=')
+                if len(parts) != 2:
+                    print(f"**Invalid Parameter: {param}**")
+                    continue
+                [key, value] = parts
+                print(f"key: {key}")
+                print(f"Value: {value}")
+                if value.startswith('"') and value.endswith('"'):
+                    value = value.strip('"').replace('_', ' ')
+                elif '.' in value:
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        print(f"**Invalid Float Value {value}**")
+                        continue
+                else:
+
+                        continue
+
+                class_param[key] =  value
+
+            new_instance = self.classes[obj](**class_param)
+            if new_instance is not None:
+                print("{}".format(new_instance.id))
+                new_instance.save()
 
     def do_show(self, command):
         """Print the string rep of an instance based on class name and id."""
